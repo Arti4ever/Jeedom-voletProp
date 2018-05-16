@@ -107,38 +107,47 @@ class voletProp extends eqLogic {
 		if(!is_object($Up))
 			return false;
 		$Stop->execute(null);
+         sleep(2);// ajout tempo entre les commandes
 		//cache::set('voletProp::Move::'.$this->getId(),false, 0);
 		$HauteurVolet=$this->getCmd(null,'hauteur')->execCmd();
+         if($HauteurVolet == $Hauteur)
+            return; //rien a faire
 		if($this->getConfiguration('Inverser'))
-			$HauteurVolet=100-$HauteurVolet;
-		if($HauteurVolet == $Hauteur)
-			return;
-		
-		$Decol=false;
-		if($Hauteur == 0 || $HauteurVolet == 0)
-			$Decol=true;
+        {
+            $HauteurVolet=100-$HauteurVolet;
+          	$Hauteur=100-$Hauteur;
+        }
 		if($HauteurVolet > $Hauteur){
 			$Delta=$HauteurVolet-$Hauteur;
-			$temps=$this->TpsAction($Delta,$Decol);
+			$temps=$this->TpsAction($Delta);
 			$Down->execute(null);
 			log::add('voletProp','debug',$this->getHumanName().' Nous allons descendre le volet de '.$Delta.'%');
 		}else{
 			$Delta=$Hauteur-$HauteurVolet;
-			$temps=$this->TpsAction($Delta,$Decol);
+			$temps=$this->TpsAction($Delta);
 			$Up->execute(null);
 			log::add('voletProp','debug',$this->getHumanName().' Nous allons monter le volet de '.$Delta.'%');
 		}
-		sleep($temps);
-		$Stop->execute(null);
+        sleep($temps);
+        if(($Hauteur != 0) && ($Hauteur < 99)) //
+        {
+			$Stop->execute(null);
+        }
+        if($this->getConfiguration('Inverser'))
+        {
+          	$Hauteur=100-$Hauteur;
+        }
 		log::add('voletProp','debug',$this->getHumanName().' Le volet est a '.$Hauteur.'%');
 		if ($this->getConfiguration('cmdMoveState') == '' && $this->getConfiguration('cmdStopState') == '' )			
 			$this->checkAndUpdateCmd('hauteur',$Hauteur);
 	}
-    	public function TpsAction($Hauteur, $Decol) {
+    	public function TpsAction($Hauteur) {
 		$TpsGlobal=$this->getConfiguration('Ttotal');
-		if(!$Decol)
-			$TpsGlobal-=$this->getConfiguration('Tdecol');
-		$tps=$TpsGlobal*$Hauteur/100;
+		$TpsDecol=$this->getConfiguration('Tdecol');
+        $HauteurCouranteVolet=$this->getCmd(null,'hauteur')->execCmd();
+		$tps=(($TpsGlobal-$TpsDecol)*$Hauteur)/100;
+		if($HauteurCouranteVolet<=1) //si le volet n'est pas decolé, on ajoute le temps de decol
+			$tps+=$TpsDecol;          
 		log::add('voletProp','debug',$this->getHumanName().' Temps d\'action '.$tps.'s');
 		return $tps;
 	}
@@ -197,8 +206,8 @@ class voletProp extends eqLogic {
 		$this->StopListener();
 		$hauteur=$this->AddCommande("Hauteur","hauteur","info",'numeric',0,null,null,null,'FLAP_STATE');
 		$this->AddCommande("Position","position","action",'slider',1,$hauteur->getId(),'Volet',null,'FLAP_SLIDER');
-		$this->AddCommande("Up","up","action", 'other',1,null,null,'<i class="fa fa-arrow-up"></i>','FLAP_UP');
-		$this->AddCommande("Down","down","action", 'other',1,null,null,'<i class="fa fa-arrow-down"></i>','FLAP_DOWN');
+		$this->AddCommande("Up","up","action", 'other',1,null,null,'<i class="fa fa-chevron-up"></i>','FLAP_UP');
+		$this->AddCommande("Down","down","action", 'other',1,null,null,'<i class="fa fa-chevron-down"></i>','FLAP_DOWN');
 		$this->AddCommande("Stop","stop","action", 'other',1,null,null,'<i class="fa fa-stop"></i>','FLAP_STOP');
 		$this->StartListener();
 	}	
@@ -209,12 +218,24 @@ class voletPropCmd extends cmd {
 			case "up":
 				$cmd=cmd::byId(str_replace('#','',$this->getEqLogic()->getConfiguration('cmdUp')));
 				if(is_object($cmd))
+                {
 					$cmd->execute(null);
+                  	if($this->getEqLogic()->getConfiguration('Inverser'))
+                    	$this->getEqLogic()->checkAndUpdateCmd('hauteur',0);
+                  	else
+                        $this->getEqLogic()->checkAndUpdateCmd('hauteur',100);
+                }
 			break;
 			case "down":
 				$cmd=cmd::byId(str_replace('#','',$this->getEqLogic()->getConfiguration('cmdDown')));
 				if(is_object($cmd))
+                {
 					$cmd->execute(null);
+                  	if($this->getEqLogic()->getConfiguration('Inverser'))
+                    	$this->getEqLogic()->checkAndUpdateCmd('hauteur',100);
+                  	else
+                        $this->getEqLogic()->checkAndUpdateCmd('hauteur',0);                
+                }
 			break;
 			case "stop":
 				$cmd=cmd::byId(str_replace('#','',$this->getEqLogic()->getConfiguration('cmdStop')));

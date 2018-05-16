@@ -152,7 +152,7 @@ $eqLogics = eqLogic::byType('voletProp');
 									</label>
 									<div class="col-sm-5">
 										<label>{{Inverser}}</label>
-										<input type="checkbox" class="eqLogicAttr" data-label-text="{{Inverser}}" data-l1key="Inverser" />
+										<input type="checkbox" class="eqLogicAttr" data-label-text="{{Inverser}}" data-l1key="configuration" data-l2key="Inverser" />
 									</div>
 								</div>	
 								<div class="form-group">
