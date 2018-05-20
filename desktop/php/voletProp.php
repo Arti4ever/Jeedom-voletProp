@@ -14,7 +14,7 @@ $eqLogics = eqLogic::byType('voletProp');
 				<a class="btn btn-default eqLogicAction" style="width : 50%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter}}</a>
 				<li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
 				<?php
-					foreach ($eqLogics as $eqLogic) 
+					foreach ($eqLogics as $eqLogic)
 						echo '<li class="cursor li_eqLogic" data-eqLogic_id="' . $eqLogic->getId() . '"><a>' . $eqLogic->getHumanName(true) . '</a></li>';
 				?>
 			</ul>
@@ -51,7 +51,7 @@ $eqLogics = eqLogic::byType('voletProp');
 				}
 			?>
 		</div>
-	</div>  
+	</div>
 	<div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
 		<a class="btn btn-success btn-sm eqLogicAction pull-right" data-action="save"><i class="fa fa-check-circle"></i> Sauvegarder</a>
 		<a class="btn btn-danger btn-sm eqLogicAction pull-right" data-action="remove"><i class="fa fa-minus-circle"></i> Supprimer</a>
@@ -99,7 +99,7 @@ $eqLogics = eqLogic::byType('voletProp');
 										<select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
 											<option value="">{{Aucun}}</option>
 											<?php
-												foreach (object::all() as $object) 
+												foreach (object::all() as $object)
 													echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
 											?>
 										</select>
@@ -145,42 +145,25 @@ $eqLogics = eqLogic::byType('voletProp');
 							<legend>Objet de control du volet</legend>
 							<fieldset>
 								<div class="form-group">
-									<label class="col-sm-2 control-label">{{Inverser le sense}}
+									<label class="col-sm-2 control-label">{{Inverser le sens}}
 										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Permet d'inverser le sense, 100% de fermeture au lieu de 100% d'ouverture}}"></i>
+											<i class="fa fa-question-circle tooltips" title="{{Permet d'inverser le sens, 100% = Fermé, au lieu de 100% = ouvert}}"></i>
 										</sup>
 									</label>
 									<div class="col-sm-5">
 										<label>{{Inverser}}</label>
 										<input type="checkbox" class="eqLogicAttr" data-label-text="{{Inverser}}" data-l1key="configuration" data-l2key="Inverser" />
 									</div>
-								</div>	
+								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">{{Objet de montée}}
 										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Sélectionner la commande déterminant la montée du volet}}"></i>
+											<i class="fa fa-question-circle tooltips" title="{{Sélectionnez la commande correspondant à la montée du volet}}"></i>
 										</sup>
 									</label>
 									<div class="col-sm-5">
 										<div class="input-group">
-											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdUp" placeholder="{{Séléctionner une commande}}"/>
-											<span class="input-group-btn">
-												<a class="btn btn-success btn-sm listCmdAction" data-type="action">
-													<i class="fa fa-list-alt"></i>
-												</a>
-											</span>
-										</div>
-									</div>
-								</div>	
-								<div class="form-group">
-									<label class="col-sm-2 control-label">{{Objet de stop}}
-										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Sélectionner la commande déterminant la arret du volet}}"></i>
-										</sup>
-									</label>
-									<div class="col-sm-5">
-										<div class="input-group">
-											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdStop" placeholder="{{Séléctionner une commande}}"/>
+											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdUp" placeholder="{{Sélectionnez une commande}}"/>
 											<span class="input-group-btn">
 												<a class="btn btn-success btn-sm listCmdAction" data-type="action">
 													<i class="fa fa-list-alt"></i>
@@ -190,14 +173,14 @@ $eqLogics = eqLogic::byType('voletProp');
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 control-label">{{Objet de decente}}
+									<label class="col-sm-2 control-label">{{Objet de stop}}
 										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Sélectionner la commande déterminant la decente du volet}}"></i>
+											<i class="fa fa-question-circle tooltips" title="{{Sélectionnez la commande correspondant au stop du volet}}"></i>
 										</sup>
 									</label>
 									<div class="col-sm-5">
 										<div class="input-group">
-											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdDown" placeholder="{{Séléctionner une commande}}"/>
+											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdStop" placeholder="{{Sélectionnez une commande}}"/>
 											<span class="input-group-btn">
 												<a class="btn btn-success btn-sm listCmdAction" data-type="action">
 													<i class="fa fa-list-alt"></i>
@@ -205,7 +188,24 @@ $eqLogics = eqLogic::byType('voletProp');
 											</span>
 										</div>
 									</div>
-								</div>	
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">{{Objet de descente}}
+										<sup>
+											<i class="fa fa-question-circle tooltips" title="{{Sélectionnez la commande correspondant à la descente du volet}}"></i>
+										</sup>
+									</label>
+									<div class="col-sm-5">
+										<div class="input-group">
+											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdDown" placeholder="{{Sélectionnez une commande}}"/>
+											<span class="input-group-btn">
+												<a class="btn btn-success btn-sm listCmdAction" data-type="action">
+													<i class="fa fa-list-alt"></i>
+												</a>
+											</span>
+										</div>
+									</div>
+								</div>
 							</fieldset>
 						</form>
 					</div>
@@ -216,12 +216,12 @@ $eqLogics = eqLogic::byType('voletProp');
 								<div class="form-group">
 									<label class="col-sm-2 control-label">{{Etat du mouvement}}
 										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Sélectionner la commande déterminant l'état du mouvement du volet}}"></i>
+											<i class="fa fa-question-circle tooltips" title="{{Sélectionnez la commande déterminant l'état du mouvement du volet}}"></i>
 										</sup>
 									</label>
 									<div class="col-sm-5">
 										<div class="input-group">
-											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdMoveState" placeholder="{{Séléctionner une commande}}"/>
+											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdMoveState" placeholder="{{Sélectionnez une commande}}"/>
 											<span class="input-group-btn">
 												<a class="btn btn-success btn-sm listCmdAction" data-type="info">
 													<i class="fa fa-list-alt"></i>
@@ -229,16 +229,16 @@ $eqLogics = eqLogic::byType('voletProp');
 											</span>
 										</div>
 									</div>
-								</div>	
+								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">{{Etat du stop}}
 										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Sélectionner la commande déterminant  l'état de l'arret du volet}}"></i>
+											<i class="fa fa-question-circle tooltips" title="{{Sélectionnez la commande déterminant l'état de l'arret du volet}}"></i>
 										</sup>
 									</label>
 									<div class="col-sm-5">
 										<div class="input-group">
-											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdStopState" placeholder="{{Séléctionner une commande}}"/>
+											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdStopState" placeholder="{{Sélectionnez une commande}}"/>
 											<span class="input-group-btn">
 												<a class="btn btn-success btn-sm listCmdAction" data-type="info">
 													<i class="fa fa-list-alt"></i>
@@ -250,12 +250,12 @@ $eqLogics = eqLogic::byType('voletProp');
 								<div class="form-group">
 									<label class="col-sm-2 control-label">{{Fin de course}}
 										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Sélectionner la commande déterminant la fin de course}}"></i>
+											<i class="fa fa-question-circle tooltips" title="{{Sélectionnez la commande déterminant la fin de course}}"></i>
 										</sup>
 									</label>
 									<div class="col-sm-5">
 										<div class="input-group">
-											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdEnd" placeholder="{{Séléctionner une commande}}"/>
+											<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="cmdEnd" placeholder="{{Sélectionnez une commande}}"/>
 											<span class="input-group-btn">
 												<a class="btn btn-success btn-sm listCmdAction" data-type="info">
 													<i class="fa fa-list-alt"></i>
@@ -263,7 +263,7 @@ $eqLogics = eqLogic::byType('voletProp');
 											</span>
 										</div>
 									</div>
-								</div>	
+								</div>
 							</fieldset>
 						</form>
 					</div>
@@ -274,17 +274,17 @@ $eqLogics = eqLogic::byType('voletProp');
 								<div class="form-group">
 									<label class="col-sm-2 control-label">{{Temps total}}
 										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Saisissez le temps total pour executer une montée ou une decente}}"></i>
+											<i class="fa fa-question-circle tooltips" title="{{Saisissez le temps total pour exécuter une montée ou une descente}}"></i>
 										</sup>
 									</label>
 									<div class="col-sm-5">
-										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="Ttotal" placeholder="{{Saisir le temps total d'execution (s)}}"/>
+										<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="Ttotal" placeholder="{{Saisir le temps total d'exécution (s)}}"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">{{Temps de décollement}}
 										<sup>
-											<i class="fa fa-question-circle tooltips" title="{{Saisissez le temps de decollement. Temps avant que le volet se decolle de son seuil}}"></i>
+											<i class="fa fa-question-circle tooltips" title="{{Saisissez le temps de décollement. Temps avant que le volet se décolle de son seuil}}"></i>
 										</sup>
 									</label>
 									<div class="col-sm-5">
@@ -295,7 +295,7 @@ $eqLogics = eqLogic::byType('voletProp');
 						</form>
 					</div>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="commandtab">	
+				<div role="tabpanel" class="tab-pane" id="commandtab">
 					<table id="table_cmd" class="table table-bordered table-condensed">
 					    <thead>
 						<tr>
@@ -305,7 +305,7 @@ $eqLogics = eqLogic::byType('voletProp');
 					    </thead>
 					    <tbody></tbody>
 					</table>
-				</div>	
+				</div>
 			</div>
 		</div>
 </div>

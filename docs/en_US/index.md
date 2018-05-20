@@ -1,39 +1,39 @@
 Description
 ===
-Ce plugin a pour but de permetre de gerer ses volets de maniere proportionnel
+This plugin is intended to manage its shutters in a proportional manner.
 
-Paramétrage d'un volet proportionnel
+Setting a proportional shutter
 ===
 
 ![introduction01](../images/Configuration.jpg)
 
-La page de configuration est assez simple.
+The configuration page is quite simple.
 
-Géneral
+General
 ---
 
-* Nom du volet : Le nom a déjà été paramétrée mais vous avez la possibilité de la changer
-* Objet parent : Ce paramétré permet d'ajouter l'équipement dans un objet Jeedom
-* Catégorie : Déclare l'équipement dans une catégorie
-* Visible : Permet de rendre l'équipement visible dans le Dashboard
-* Activer : Permet d'activer l'équipement
+* Name of the shutter: The name has already been set but you can change it
+* Parent object: This parameter allows to add the equipment in a Jeedom object
+* Category: Declare equipment in a category
+* Visible: Allows to make the equipment visible in the Dashboard
+* Activate: Activate the equipment
 
-Objet de control du volet
+Control object of the shutter
 ---
 
-* Objet de montée : Commande jeedom permétant de controler la montée (Action -> Defaut)
-* Objet de stop  : Commande jeedom permétant de controler le stop (Action -> Defaut)
-* Objet de decente : Commande jeedom permétant de controler la déscente (Action -> Defaut)
+* Subject to climb: Jeedom order to control the rise (Action -> Default)
+* Stop Subject: Jeedom order to control the stop (Action -> Default)
+* Downhill Subject: Jeedom order to control the descent (Action -> Default)
 
-Objet d'état du volet
+Status object of the shutter
 ---
 
-* Etat du mouvement  : Commande jeedom representant l'etat du mouvement(info -> Binaire : 0 = déscente, 1 = montée)
-* Etat du stop  :  Commande jeedom representant l'etat du stop(info -> Binaire : 1 = stop)
-* Fin de course  :  Commande jeedom representant la fin de course(info -> Binaire :1 = Volet commpletement fermé)
+* State of the movement: Jeedom command representing the state of the movement ( info -> Binary: 0 = down , 1 = up)
+* State of the stop: Jeedom command representing the state of the stop ( info -> Binary: 1 = stop)
+* End of mouvement: Jeedom command representing the end of the mouvement ( info -> Binary: 1 = Shutter completely closed)
 
-Délais
+time
 ---
 
-* Temps total : Temps total que met le volet pour une fermeture ou un ouverture
-* Temps de décollement : Temps avant lequel le volet se decolle du sol
+* Total Time: The total time that the shutter lasts for complete closure or opening.
+* Release time: Time before which the shutter comes off the ground

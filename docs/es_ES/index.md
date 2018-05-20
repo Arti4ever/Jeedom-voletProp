@@ -1,6 +1,6 @@
 Description
 ===
-Ce plugin a pour but de permetre de gerer ses volets de maniere proportionnel
+Ce plugin a pour but de permettre de gérer ses volets de manière proportionnel.
 
 Paramétrage d'un volet proportionnel
 ===
@@ -9,7 +9,7 @@ Paramétrage d'un volet proportionnel
 
 La page de configuration est assez simple.
 
-Géneral
+Général
 ---
 
 * Nom du volet : Le nom a déjà été paramétrée mais vous avez la possibilité de la changer
@@ -21,19 +21,19 @@ Géneral
 Objet de control du volet
 ---
 
-* Objet de montée : Commande jeedom permétant de controler la montée (Action -> Defaut)
-* Objet de stop  : Commande jeedom permétant de controler le stop (Action -> Defaut)
-* Objet de decente : Commande jeedom permétant de controler la déscente (Action -> Defaut)
+* Objet de montée : Commande Jeedom permettant de contrôler la montée (Action -> Défaut)
+* Objet de stop : Commande Jeedom permettant de contrôler le stop (Action -> Défaut)
+* Objet de descente : Commande Jeedom permettant de contrôler la descente (Action -> Défaut)
 
 Objet d'état du volet
 ---
 
-* Etat du mouvement  : Commande jeedom representant l'etat du mouvement(info -> Binaire : 0 = déscente, 1 = montée)
-* Etat du stop  :  Commande jeedom representant l'etat du stop(info -> Binaire : 1 = stop)
-* Fin de course  :  Commande jeedom representant la fin de course(info -> Binaire :1 = Volet commpletement fermé)
+* État du mouvement : Commande Jeedom représentant l'état du mouvement (info -> Binaire : 0 = descente, 1 = montée)
+* État du stop :  Commande Jeedom représentant l'état du stop (info -> Binaire : 1 = stop)
+* Fin de course :  Commande Jeedom représentant la fin de course (info -> Binaire :1 = Volet complètement fermé)
 
 Délais
 ---
 
-* Temps total : Temps total que met le volet pour une fermeture ou un ouverture
-* Temps de décollement : Temps avant lequel le volet se decolle du sol
+* Temps total : Temps total que met le volet pour une fermeture ou une ouverture complète.
+* Temps de décollement : Temps avant lequel le volet se décolle du sol

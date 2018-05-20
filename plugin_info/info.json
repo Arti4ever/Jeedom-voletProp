@@ -1,13 +1,13 @@
 {
 	"id" : "voletProp",
-	"name" : "Volet proportionel",
-	"description" : "Ce plugin gère l'ouverture et la fermeture proportionnel de nos volet",
+	"name" : "Volet proportionnel",
+	"description" : "Ce plugin gère l'ouverture et la fermeture proportionnel de nos volets.",
 	"licence" : "AGPL",
-	"author" : "Halbout Michael",
+	"author" : "Arti4ever",
 	"require" : "2.4",
 	"category" : "automatisation",
 	"hasOwnDeamon" : true,
-	"issue" : "https://github.com/mika-nt28/Jeedom-voletProp/issues",
- 	"changelog" : "https://github.com/mika-nt28/Jeedom-voletProp/commits/master",
- 	"documentation" : "https://mika-nt28.github.io/Jeedom-voletProp"
+	"issue" : "https://github.com/arti4ever/Jeedom-voletProp/issues",
+ 	"changelog" : "https://github.com/arti4ever/Jeedom-voletProp/commits/master",
+ 	"documentation" : "https://arti4ever.github.io/Jeedom-voletProp"
 }
