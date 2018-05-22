@@ -124,8 +124,6 @@ class voletProp extends eqLogic
 		$Up=cmd::byId(str_replace('#','',$this->getConfiguration('cmdUp')));
 		if(!is_object($Up))
 			return false;
-		$Stop->execute(null);
-    sleep(2);// ajout tempo entre les commandes
 		$HauteurVolet=$this->getCmd(null,'hauteur')->execCmd();
 		if($HauteurVolet == $Hauteur)
 			return; //rien a faire
