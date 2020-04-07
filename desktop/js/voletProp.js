@@ -32,18 +32,18 @@ function addCmdToTable(_cmd) {
 	var parmetre=$('<td>');	
 	if (is_numeric(_cmd.id)) {
 		parmetre.append($('<a class="btn btn-default btn-xs cmdAction" data-action="test">')
-			.append($('<i class="fa fa-rss">')
+			.append($('<i class="fas fa-rss">')
 				.text('{{Tester}}')));
 	}
 	parmetre.append($('<a class="btn btn-default btn-xs cmdAction tooltips" data-action="configure">')
-		.append($('<i class="fa fa-cogs">')));
+		.append($('<i class="fas fa-cogs">')));
 	parmetre.append($('<div>')
 		.append($('<span>')
 			.append($('<label class="checkbox-inline">')
 				.append($('<input type="checkbox" class="cmdAttr checkbox-inline" data-size="mini" data-label-text="{{Historiser}}" data-l1key="isHistorized"/>'))
 				.append('{{Historiser}}')
 				.append($('<sup>')
-					.append($('<i class="fa fa-question-circle tooltips" style="font-size : 1em;color:grey;">')
+					.append($('<i class="fas fa-question-circle tooltips" style="font-size : 1em;color:grey;">')
 					.attr('title','Souhaitez-vous historiser les changements de valeurs ?'))))));
 	parmetre.append($('<div>')
 		.append($('<span>')
@@ -51,7 +51,7 @@ function addCmdToTable(_cmd) {
 				.append($('<input type="checkbox" class="cmdAttr checkbox-inline" data-size="mini" data-label-text="{{Afficher}}" data-l1key="isVisible" checked/>'))
 				.append('{{Afficher}}')
 				.append($('<sup>')
-					.append($('<i class="fa fa-question-circle tooltips" style="font-size : 1em;color:grey;">')
+					.append($('<i class="fas fa-question-circle tooltips" style="font-size : 1em;color:grey;">')
 					.attr('title','Souhaitez-vous afficher cette commande sur le dashboard ?'))))));
 	tr.append(parmetre);
 	$('#table_cmd tbody').append(tr);

@@ -228,9 +228,9 @@ class voletProp extends eqLogic
 		$this->StopListener();
 		$hauteur=$this->AddCommande("Hauteur","hauteur","info",'numeric',0,null,null,null,'FLAP_STATE');
 		$this->AddCommande("1_Position","position","action",'slider',1,$hauteur->getId(),'Volet',null,'FLAP_SLIDER');
-		$this->AddCommande("2_Up","up","action", 'other',1,null,null,'<i class="fa fa-chevron-up"></i>','FLAP_UP');
-    $this->AddCommande("3_Stop","stop","action", 'other',1,null,null,'<i class="fa fa-stop"></i>','FLAP_STOP');
-		$this->AddCommande("4_Down","down","action", 'other',1,null,null,'<i class="fa fa-chevron-down"></i>','FLAP_DOWN');
+		$this->AddCommande("2_Up","up","action", 'other',1,null,null,'<i class="fas fa-chevron-up"></i>','FLAP_UP');
+    $this->AddCommande("3_Stop","stop","action", 'other',1,null,null,'<i class="fas fa-stop"></i>','FLAP_STOP');
+		$this->AddCommande("4_Down","down","action", 'other',1,null,null,'<i class="fas fa-chevron-down"></i>','FLAP_DOWN');
 		$this->StartListener();
 	}
 }
